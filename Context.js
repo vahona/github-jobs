@@ -1,50 +1,36 @@
-import React, { Children, createContext, useReducer, useEffect } from 'react'
+import React, { Children, createContext, useReducer, useEffect, useState } from 'react'
 
 const Context = React.createContext()
 
 function ContextProvider({children}) {
 
-    const [state, dispatch] = useReducer (
-      (state, action) => {
-        switch (action.type) {
-          case " FETCH-API-DATA": {
-            const url = "https://jobs.github.com/positions.json?description=python&location=new+york";
-            state = fetch(url);
-            response = state.json();
+          const [jobs, setJobs] = useState([]);
+          console.log("jj", jobs);
 
-              }
+          useEffect(() => {
+            (async () => {
+              const result = await fetch(
+                "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?search=node"
+              );
+              const data = await result.json();
+              console.log("kk", data);
+              setJobs(data);
+            })();
+          }, []);
 
-            return {
-              ...state,
-              loading: false,
-              job: response,
-            };
+          useEffect(() => {
+            if (jobs == []) {
+              return null;
+            } else {
+              setJobs(jobs);
+            }
+          }, [jobs]);
 
-
-          default: {
-            break;
-          }
-        }
-
-        return state;
-      },
-
-      {
-        loading: true,
-        job: []
-      }
-    );
-
-    useEffect(() => {
-         dispatch({ type: "FETCH-API-DATA" });
-    }, [])
 
 
     return (
-        <Context.Provider value = {{state, dispatch}} >
-            {children}
-        </Context.Provider>
-    )
+      <Context.Provider value={{ jobs, setJobs }}>{children}</Context.Provider>
+    );
 }
 
 

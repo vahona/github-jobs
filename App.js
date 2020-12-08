@@ -1,22 +1,38 @@
 import { func } from "prop-types"
 import React, { useContext } from "react";
+import styled from "styled-components";
+
 
 import {Context} from './Context'
 import Header from './components/Header'
 import Typejob from './components/Checkjob'
-import Alljobs from './components/Alljobs'
+import Fulltimejob from "./components/Fulltimejob";
+
+const Headers = styled.h1`
+  text-align: center;
+`;
+
+const Countainer = styled.div`
+ 
+  display: grid;
+  grid-template-columns: 30% auto;
+  margin-top: 2rem
+
+`;
 
 
 function App({children}) {
 
     return (
-    <>
-      <h1>Github jobs</h1>
-      <Header/>
-      <Typejob/>
-      <Alljobs/>
-    </>
-    )
+      <>
+        <Headers>Github jobs</Headers>
+        <Header />
+        <Countainer >
+          <Typejob />
+          <Fulltimejob />
+        </Countainer>
+      </>
+    );
 }
 
 export default App
