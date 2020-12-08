@@ -7,30 +7,39 @@ import {Context} from './Context'
 import Header from './components/Header'
 import Typejob from './components/Checkjob'
 import Fulltimejob from "./components/Fulltimejob";
+import { Switch, Route, Link } from "react-router-dom";
+import Jobdescription from './components/Jobdescription'
 
-const Headers = styled.h1`
-  text-align: center;
-`;
+// const Headers = styled.h1`
+//   text-align: center;
+// `;
 
-const Countainer = styled.div`
+// const Countainer = styled.div`
  
-  display: grid;
-  grid-template-columns: 30% auto;
-  margin-top: 2rem
+//   display: grid;
+//   grid-template-columns: 30% auto;
+//   margin-top: 2rem
 
-`;
+// `;
 
 
 function App({children}) {
 
     return (
       <>
-        <Headers>Github jobs</Headers>
+        <h1>Github jobs</h1>
         <Header />
-        <Countainer >
-          <Typejob />
-          <Fulltimejob />
-        </Countainer>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Typejob />
+              <Fulltimejob />
+            </Route>
+            <Route exact path="/Jobdescription">
+              <Jobdescription />
+            </Route>
+          </Switch>
+        </div>
       </>
     );
 }

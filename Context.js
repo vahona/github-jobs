@@ -4,8 +4,15 @@ const Context = React.createContext()
 
 function ContextProvider({children}) {
 
+      // Set state to store the data
+
           const [jobs, setJobs] = useState([]);
+          const [description, setDescription] = useState([])
+          const [inputValue, setInputValue] = useState('')
+          const [title, setTitle] = useState([])
           console.log("jj", jobs);
+
+      // Use useEffect to fetch the data from API
 
           useEffect(() => {
             (async () => {
@@ -13,7 +20,6 @@ function ContextProvider({children}) {
                 "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?search=node"
               );
               const data = await result.json();
-              console.log("kk", data);
               setJobs(data);
             })();
           }, []);
@@ -26,10 +32,17 @@ function ContextProvider({children}) {
             }
           }, [jobs]);
 
+          
+        // Filtering the jobs by its title, company, enterprise and benefit
 
+        const SomeJobs = jobs.filter((job) => job.title.toLowerCase().includes(inputValue.toLowerCase()))
+
+        useEffect(() => {
+          setJobs(SomeJobs)
+        },[title, inputValue])
 
     return (
-      <Context.Provider value={{ jobs, setJobs }}>{children}</Context.Provider>
+      <Context.Provider value={{ jobs, setJobs, inputValue, setInputValue }}>{children}</Context.Provider>
     );
 }
 

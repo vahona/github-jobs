@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 import styled from "styled-components";
+
+import { Context } from "../Context";
 
 const Forms = styled.form`
   text-align: center;
@@ -26,10 +28,12 @@ const ButtonSearch = styled.button`
 `;
 
 export default function Header() {
+
+    const { inputValue, setInputValue } = useContext(Context);
     return (
       <div>
-        <Forms>
-          <InputSerach placeholder="Title, companies, expertise or benefits" />
+        <Forms  >
+          <InputSerach placeholder="Title, companies, expertise or benefits" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
           <ButtonSearch>Search</ButtonSearch>
         </Forms>
       </div>
