@@ -32,7 +32,7 @@ export default function Header() {
     const { inputValue, setInputValue } = useContext(Context);
     return (
       <div>
-        <Forms  >
+        <Forms onSubmit={setInputValue} >
           <InputSerach placeholder="Title, companies, expertise or benefits" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
           <ButtonSearch>Search</ButtonSearch>
         </Forms>

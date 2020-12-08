@@ -9,6 +9,7 @@ function ContextProvider({children}) {
           const [jobs, setJobs] = useState([]);
           const [description, setDescription] = useState([])
           const [inputValue, setInputValue] = useState('')
+          const [inputValueLocation, setInputValueLocation] = useState("");
           const [title, setTitle] = useState([])
           console.log("jj", jobs);
 
@@ -37,12 +38,34 @@ function ContextProvider({children}) {
 
         const SomeJobs = jobs.filter((job) => job.title.toLowerCase().includes(inputValue.toLowerCase()))
 
+        const SomeJobByLocation = jobs.filter((works) =>
+          works.location
+            .toLowerCase()
+            .includes(inputValueLocation.toLowerCase())
+        );
+
         useEffect(() => {
           setJobs(SomeJobs)
         },[title, inputValue])
 
+        useEffect(() => {
+          setJobs(SomeJobByLocation);
+        }, [location, inputValueLocation]);
+        
+
     return (
-      <Context.Provider value={{ jobs, setJobs, inputValue, setInputValue }}>{children}</Context.Provider>
+      <Context.Provider
+        value={{
+          jobs,
+          setJobs,
+          inputValue,
+          setInputValue,
+          inputValueLocation,
+          setInputValueLocation,
+        }}
+      >
+        {children}
+      </Context.Provider>
     );
 }
 

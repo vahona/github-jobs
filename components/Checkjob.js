@@ -16,7 +16,7 @@ const Inputs2 = styled.input`
 
 export default function Typejob() {
 
-
+const { inputValueLocation, setInputValueLocation } = useContext(Context);
 
     return (
       <div>
@@ -29,6 +29,8 @@ export default function Typejob() {
             <Inputs2
               placeholder="City, State, zip code or country"
               type="text"
+              value={inputValueLocation}
+              onChange={(e) => setInputValueLocation(e.target.value)}
             />
             <label>Location</label>
           </div>

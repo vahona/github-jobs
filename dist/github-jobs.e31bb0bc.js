@@ -32282,6 +32282,7 @@ function ContextProvider({
   const [jobs, setJobs] = (0, _react.useState)([]);
   const [description, setDescription] = (0, _react.useState)([]);
   const [inputValue, setInputValue] = (0, _react.useState)('');
+  const [inputValueLocation, setInputValueLocation] = (0, _react.useState)("");
   const [title, setTitle] = (0, _react.useState)([]);
   console.log("jj", jobs); // Use useEffect to fetch the data from API
 
@@ -32301,15 +32302,21 @@ function ContextProvider({
   }, [jobs]); // Filtering the jobs by its title, company, enterprise and benefit
 
   const SomeJobs = jobs.filter(job => job.title.toLowerCase().includes(inputValue.toLowerCase()));
+  const SomeJobByLocation = jobs.filter(works => works.location.toLowerCase().includes(inputValueLocation.toLowerCase()));
   (0, _react.useEffect)(() => {
     setJobs(SomeJobs);
   }, [title, inputValue]);
+  (0, _react.useEffect)(() => {
+    setJobs(SomeJobByLocation);
+  }, [location, inputValueLocation]);
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       jobs,
       setJobs,
       inputValue,
-      setInputValue
+      setInputValue,
+      inputValueLocation,
+      setInputValueLocation
     }
   }, children);
 }
@@ -34280,7 +34287,9 @@ function Header() {
     inputValue,
     setInputValue
   } = (0, _react.useContext)(_Context.Context);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Forms, null, /*#__PURE__*/_react.default.createElement(InputSerach, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Forms, {
+    onSubmit: setInputValue
+  }, /*#__PURE__*/_react.default.createElement(InputSerach, {
     placeholder: "Title, companies, expertise or benefits",
     value: inputValue,
     onChange: e => setInputValue(e.target.value)
@@ -34317,11 +34326,17 @@ const Inputs2 = _styledComponents.default.input`
 `;
 
 function Typejob() {
+  const {
+    inputValueLocation,
+    setInputValueLocation
+  } = (0, _react.useContext)(_Context.Context);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs2, {
     placeholder: "City, State, zip code or country",
-    type: "text"
+    type: "text",
+    value: inputValueLocation,
+    onChange: e => setInputValueLocation(e.target.value)
   }), /*#__PURE__*/_react.default.createElement("label", null, "Location")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "London")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
