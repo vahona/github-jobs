@@ -32,8 +32,8 @@ function App({children}) {
         <div>
           <Switch>
             <Route exact path="/">
-              <Typejob />
-              <Fulltimejob />
+                <Typejob />
+                <Fulltimejob />
             </Route>
             <Route exact path="/Jobdescription">
               <Jobdescription />

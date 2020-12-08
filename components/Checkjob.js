@@ -16,13 +16,20 @@ const Inputs2 = styled.input`
 
 export default function Typejob() {
 
-const { inputValueLocation, setInputValueLocation } = useContext(Context);
+const {
+  inputValueLocation,
+  setInputValueLocation,
+  checked,
+  setChecked,
+  checkedLondon,
+  setCheckedLondon,
+} = useContext(Context);
 
     return (
       <div>
         <form>
           <div>
-            <Inputs type="checkbox" />
+            <Inputs type="checkbox" onClick={setChecked} />
             <label>Full time</label>
           </div>
           <div>
@@ -35,7 +42,10 @@ const { inputValueLocation, setInputValueLocation } = useContext(Context);
             <label>Location</label>
           </div>
           <div>
-            <Inputs type="checkbox" />
+            <Inputs
+              type="checkbox"
+              onClick={(e) => setCheckedLondon()}
+            />
             <label>London</label>
           </div>
           <div>
