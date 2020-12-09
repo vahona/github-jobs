@@ -4,6 +4,7 @@ import { Context } from "../Context";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 
+
 const Logo = styled.img`
   width: 20%;
   height: 100%;
@@ -45,7 +46,8 @@ const NameTitle = styled.div`
 `
 
 function Fulltimejob() {
-  const { jobs, setJobs } = useContext(Context);
+  const { jobs, setJobs, NewYorkJob, setNewYorkJob } = useContext(Context);
+
 
   const someJobs = jobs.map((job) => {
     return (
@@ -67,7 +69,14 @@ function Fulltimejob() {
     );
   });
 
-  return <div>{someJobs}</div>;
+
+
+  return (
+    <div>
+      
+      {someJobs}
+    </div>
+  );
 }
 
 export default Fulltimejob;

@@ -29,17 +29,19 @@ function App({children}) {
       <>
         <Headers>Github jobs</Headers>
         <Header />
-        <Countainer>
-          <Switch>
-            <Route exact path="/">
-              <Typejob />
-              <Fulltimejob />
-            </Route>
-            <Route exact path="/Jobdescription">
-              <Jobdescription />
-            </Route>
-          </Switch>
-        </Countainer>
+        <div>
+          <Countainer>
+            <Switch>
+              <Route exact path="/">
+                <Typejob />
+                <Fulltimejob />
+              </Route>
+              <Route exact path="/Jobdescription/:id">
+                <Jobdescription />
+              </Route>
+            </Switch>
+          </Countainer>
+        </div>
       </>
     );
 }

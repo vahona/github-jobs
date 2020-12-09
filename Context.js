@@ -12,12 +12,15 @@
     // Set state to store the data
 
       const [jobs, setJobs] = useState([]);
+      const [NewYorkJob, setNewYorkJob] = useState([]);
       const [description, setDescription] = useState([]);
       const [inputValue, setInputValue] = useState("");
       const [inputValueLocation, setInputValueLocation] = useState("");
       const [title, setTitle] = useState([]);
       const [BerlinJobState, setBerlinJobState ] = useState([]);
       const [checkedBerlin, setCheckedBerlin] = useState(false);
+      const [LondonJobState, setLondonJobState] = useState([]);
+      const [checkedLondon, setCheckedlondon] = useState(false);
 
       // const [loading, setLoading] = useState(false)
 
@@ -25,11 +28,12 @@
 
       // Use useEffect to fetch the data from API
 
+      const fullTime = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=1&search=code"; 
+      const NewYork = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=python&location=new+york"; 
+
       useEffect(() => {
         (async () => {
-          const result = await fetch(
-            "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?search=node"
-          );
+          const result = await fetch(fullTime);
           const data = await result.json();
           setJobs(data);
         })();
@@ -43,9 +47,35 @@
         }
       }, [jobs]);
 
+      
+      // Fetching New Yourk job
+
+
+        // useEffect(() => {
+        //   (async () => {
+        //     const result = await fetch(NewYork);
+        //     const dataNew = await result.json();
+        //     setJobs(dataNew);
+        //   })();
+        // }, []);
+
+        // useEffect(() => {
+        //   if (NewYorkJob == []) {
+        //     return null;
+        //   } else {
+        //     setNewYorkJob(NewYorkJob);
+        //   }
+        // }, [NewYorkJob])
+
+
+
+      //jobs.github.com/positions.json?description=python&location=new+york
+
       // Filtering the jobs by its title, company, enterprise and benefit
 
-      const SomeJobs = jobs.filter((job) => job.title.toLowerCase().includes(inputValue.toLowerCase()));
+       const SomeJobs = jobs.filter((job) =>
+        job.title.toLowerCase().includes(inputValue.toLowerCase())
+      );
 
       useEffect(() => {
           setJobs(SomeJobs);
@@ -66,14 +96,12 @@
           return SomeJobByLocation;
           }
 
-      // Filtering by the type
 
 
-      // Filtering by the Location Londown
+      // Filtering by the Location Berlin
 
       const BerlinJobs = jobs.filter((job) => job.location ===  "Berlin");
 
-      console.log(BerlinJobs);
 
       function JobsBerlin() {
         if(!checkedBerlin) {
@@ -92,6 +120,23 @@
 
 
 
+        const LondonJobs = jobs.filter((job) => job.location === "London");
+
+        function JobsLondon() {
+          if (!checkedLondon) {
+            setCheckedlondon(LondonJobState);
+            return LondonJobs;
+          } else {
+            return jobs;
+          }
+        }
+
+        useEffect(() => {
+          setJobs(LondonJobs);
+        }, ["London", checkedLondon]);
+
+
+
       return (
         <Context.Provider
           value={{
@@ -107,6 +152,11 @@
             setCheckedBerlin,
             searchButton,
             JobsBerlin,
+            LondonJobState,
+            setLondonJobState,
+            checkedLondon,
+            setCheckedlondon,
+            JobsLondon,
           }}
         >
           {children}

@@ -3,6 +3,7 @@ import React, {useContext} from 'react'
 import styled from "styled-components";
 import { Context } from "../Context";
 
+
 const Inputs = styled.input`
    zoom: 2
 `
@@ -14,6 +15,8 @@ const Inputs2 = styled.input`
   padding-bottom: 10px;
 `;
 
+
+
 export default function Typejob() {
 
 const {
@@ -24,6 +27,7 @@ const {
   checkedBerlin,
   setCheckedBerlin,
   JobsBerlin,
+  JobsLondon,
 } = useContext(Context);
 
     return (
@@ -42,9 +46,15 @@ const {
               onChange={(e) => setInputValueLocation(e.target.value)}
             />
           </div>
+          {}
           <div>
-            <Inputs type="checkbox" />
+            <Inputs type="checkbox" onClick={(e) => JobsLondon()} />
             <label>London</label>
+          </div>
+          <div>
+            <Inputs type="checkbox" onClick={(e) => JobsBerlin()} />
+
+            <label>Berlin</label>
           </div>
           <div>
             <Inputs type="checkbox" />
@@ -53,14 +63,6 @@ const {
           <div>
             <Inputs type="checkbox" />
             <label>New york</label>
-          </div>
-          <div>
-            <Inputs
-              type="checkbox"
-              onClick={(e) => JobsBerlin(checkedBerlin)}
-            />
-
-            <label>Berlin</label>
           </div>
         </form>
       </div>
