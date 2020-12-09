@@ -16,8 +16,8 @@
       const [inputValue, setInputValue] = useState("");
       const [inputValueLocation, setInputValueLocation] = useState("");
       const [title, setTitle] = useState([]);
-      const [checked, setChecked] = useState(false);
-      const [checkedLondon, setCheckedLondon] = useState([]);
+      const [BerlinJobState, setBerlinJobState ] = useState([]);
+      const [checkedBerlin, setCheckedBerlin] = useState(false);
 
       // const [loading, setLoading] = useState(false)
 
@@ -68,25 +68,27 @@
 
       // Filtering by the type
 
-      const FullTimejob = jobs.filter((checkeed) => checked && checkeed.type === "fulltime");
-
-      useEffect(() => {
-        setJobs(FullTimejob);
-      }, ["fulltime"]);
 
       // Filtering by the Location Londown
 
-      const Londown = jobs.filter((checkeed) => checked && checkeed.type === "Londown");
+      const BerlinJobs = jobs.filter((job) => job.location ===  "Berlin");
+
+      console.log(BerlinJobs);
+
+      function JobsBerlin() {
+        if(!checkedBerlin) {
+          setCheckedBerlin(BerlinJobState)
+          return BerlinJobs
+        }
+        else {
+          return jobs
+        }
+      }
+      
 
       useEffect(() => {
-        setJobs(Londown);
-      }, []);
-
-
-      // Function for finding the items by its id
-
-   
-
+        setJobs(BerlinJobs);
+      }, ["Berlin", checkedBerlin]);
 
 
 
@@ -99,12 +101,12 @@
             setInputValue,
             inputValueLocation,
             setInputValueLocation,
-            checked,
-            setChecked,
-            checkedLondon,
-            setCheckedLondon,
+            BerlinJobState,
+            setBerlinJobState,
+            checkedBerlin,
+            setCheckedBerlin,
             searchButton,
-            
+            JobsBerlin,
           }}
         >
           {children}

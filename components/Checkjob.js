@@ -19,17 +19,18 @@ export default function Typejob() {
 const {
   inputValueLocation,
   setInputValueLocation,
-  checked,
-  setChecked,
-  checkedLondon,
-  setCheckedLondon,
+  BerlinJobState,
+  setBerlinJobState,
+  checkedBerlin,
+  setCheckedBerlin,
+  JobsBerlin,
 } = useContext(Context);
 
     return (
       <div>
         <form>
           <div>
-            <Inputs type="checkbox" onClick={setChecked} />
+            <Inputs type="checkbox" />
             <label>Full time</label>
           </div>
           <div>
@@ -42,7 +43,7 @@ const {
             />
           </div>
           <div>
-            <Inputs type="checkbox" onClick={(e) => setCheckedLondon()} />
+            <Inputs type="checkbox" />
             <label>London</label>
           </div>
           <div>
@@ -54,7 +55,11 @@ const {
             <label>New york</label>
           </div>
           <div>
-            <Inputs type="checkbox" />
+            <Inputs
+              type="checkbox"
+              onClick={(e) => JobsBerlin(checkedBerlin)}
+            />
+
             <label>Berlin</label>
           </div>
         </form>

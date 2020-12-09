@@ -12,12 +12,15 @@ export default function Jobdescription() {
 
   const job = jobs.find(job => job.id === id)
 
+  
+
   return (
     <div>
       <h2>
         <AiOutlineArrowLeft onClick={() => history.goBack()} />
+        Back
       </h2>
-         <div key={descriptions.id}>{job.description}</div>
+      <div>{job.description}</div>
     </div>
   );
 }

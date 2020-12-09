@@ -32284,8 +32284,8 @@ function ContextProvider({
   const [inputValue, setInputValue] = (0, _react.useState)("");
   const [inputValueLocation, setInputValueLocation] = (0, _react.useState)("");
   const [title, setTitle] = (0, _react.useState)([]);
-  const [checked, setChecked] = (0, _react.useState)(false);
-  const [checkedLondon, setCheckedLondon] = (0, _react.useState)([]); // const [loading, setLoading] = useState(false)
+  const [BerlinJobState, setBerlinJobState] = (0, _react.useState)([]);
+  const [checkedBerlin, setCheckedBerlin] = (0, _react.useState)(false); // const [loading, setLoading] = useState(false)
 
   console.log(jobs); // Use useEffect to fetch the data from API
 
@@ -32318,18 +32318,24 @@ function ContextProvider({
     console.log(SomeJobByLocation);
     return SomeJobByLocation;
   } // Filtering by the type
+  // Filtering by the Location Londown
 
 
-  const FullTimejob = jobs.filter(checkeed => checked && checkeed.type === "fulltime");
+  const BerlinJobs = jobs.filter(job => job.location === "Berlin");
+  console.log(BerlinJobs);
+
+  function JobsBerlin() {
+    if (!checkedBerlin) {
+      setCheckedBerlin(BerlinJobState);
+      return BerlinJobs;
+    } else {
+      return jobs;
+    }
+  }
+
   (0, _react.useEffect)(() => {
-    setJobs(FullTimejob);
-  }, ["fulltime"]); // Filtering by the Location Londown
-
-  const Londown = jobs.filter(checkeed => checked && checkeed.type === "Londown");
-  (0, _react.useEffect)(() => {
-    setJobs(Londown);
-  }, []); // Function for finding the items by its id
-
+    setJobs(BerlinJobs);
+  }, ["Berlin", checkedBerlin]);
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       jobs,
@@ -32338,11 +32344,12 @@ function ContextProvider({
       setInputValue,
       inputValueLocation,
       setInputValueLocation,
-      checked,
-      setChecked,
-      checkedLondon,
-      setCheckedLondon,
-      searchButton
+      BerlinJobState,
+      setBerlinJobState,
+      checkedBerlin,
+      setCheckedBerlin,
+      searchButton,
+      JobsBerlin
     }
   }, children);
 }
@@ -34381,28 +34388,28 @@ function Typejob() {
   const {
     inputValueLocation,
     setInputValueLocation,
-    checked,
-    setChecked,
-    checkedLondon,
-    setCheckedLondon
+    BerlinJobState,
+    setBerlinJobState,
+    checkedBerlin,
+    setCheckedBerlin,
+    JobsBerlin
   } = (0, _react.useContext)(_Context.Context);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
-    type: "checkbox",
-    onClick: setChecked
+    type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement(Inputs2, {
     placeholder: "City, State, zip code or country",
     type: "text",
     value: inputValueLocation,
     onChange: e => setInputValueLocation(e.target.value)
   })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
-    type: "checkbox",
-    onClick: e => setCheckedLondon()
+    type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "London")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "Amsterdam")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "New york")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
-    type: "checkbox"
+    type: "checkbox",
+    onClick: e => JobsBerlin(checkedBerlin)
   }), /*#__PURE__*/_react.default.createElement("label", null, "Berlin"))));
 }
 },{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"components/Fulltimejob.js":[function(require,module,exports) {
@@ -34451,7 +34458,7 @@ const DateLocation = _styledComponents.default.div`
   position: absolute;
   top: 70%;
   right: 0;
-  color: gray
+  color:gray
   
 
 `;
@@ -51107,9 +51114,7 @@ function Jobdescription() {
   const job = jobs.find(job => job.id === id);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement(_Ai.AiOutlineArrowLeft, {
     onClick: () => history.goBack()
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    key: descriptions.id
-  }, job.description));
+  }), "Back"), /*#__PURE__*/_react.default.createElement("div", null, job.description));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","react-icons/Ai":"node_modules/react-icons/Ai/index.esm.js"}],"App.js":[function(require,module,exports) {
 "use strict";

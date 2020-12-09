@@ -31,7 +31,7 @@ const DateLocation = styled.div`
   position: absolute;
   top: 70%;
   right: 0;
-  color: gray
+  color:gray
   
 
 `;
