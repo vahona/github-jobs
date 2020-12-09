@@ -13,7 +13,12 @@ const Background = styled.div`
   background-size: 300%;
   height: 200px;
   background-repeat: no-repeat;
-  padding-top: 10%
+  padding-top: 10%;
+
+  @media (min-width: 760px) {
+    background-size: 300%;
+    height: 150px;
+  }
 `; 
 
 const Forms = styled.form`
@@ -21,7 +26,7 @@ const Forms = styled.form`
   display: flex;
   flex-direction: row;
   border: 1px solid grey;  
-  margin-inline-start: 10%;
+  margin-inline-start: 5%;
   margin-inline-end: 10%;
  
  
@@ -30,8 +35,6 @@ const Forms = styled.form`
 `;
 
 const InputSerach = styled.input`
-  padding-left: 20%;
-  padding-right: 20%;
   padding-top: 1rem;
   padding-bottom: 1rem;
   flex-grow: 2;
@@ -52,7 +55,6 @@ const Containerdiv = styled.div`
 
     export default function Header() {
 
- 
 
     const { inputValue, setInputValue, searchButton } = useContext(Context);
     return (

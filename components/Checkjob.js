@@ -33,19 +33,16 @@ const {
             <label>Full time</label>
           </div>
           <div>
+            <label>Location</label>
             <Inputs2
               placeholder="City, State, zip code or country"
               type="text"
               value={inputValueLocation}
               onChange={(e) => setInputValueLocation(e.target.value)}
             />
-            <label>Location</label>
           </div>
           <div>
-            <Inputs
-              type="checkbox"
-              onClick={(e) => setCheckedLondon()}
-            />
+            <Inputs type="checkbox" onClick={(e) => setCheckedLondon()} />
             <label>London</label>
           </div>
           <div>

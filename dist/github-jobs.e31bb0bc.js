@@ -32328,7 +32328,8 @@ function ContextProvider({
   const Londown = jobs.filter(checkeed => checked && checkeed.type === "Londown");
   (0, _react.useEffect)(() => {
     setJobs(Londown);
-  }, []);
+  }, []); // Function for finding the items by its id
+
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       jobs,
@@ -34295,14 +34296,19 @@ const Background = _styledComponents.default.div`
   background-size: 300%;
   height: 200px;
   background-repeat: no-repeat;
-  padding-top: 10%
+  padding-top: 10%;
+
+  @media (min-width: 760px) {
+    background-size: 300%;
+    height: 150px;
+  }
 `;
 const Forms = _styledComponents.default.form`
   text-align: center;
   display: flex;
   flex-direction: row;
   border: 1px solid grey;  
-  margin-inline-start: 10%;
+  margin-inline-start: 5%;
   margin-inline-end: 10%;
  
  
@@ -34310,8 +34316,6 @@ const Forms = _styledComponents.default.form`
   
 `;
 const InputSerach = _styledComponents.default.input`
-  padding-left: 20%;
-  padding-right: 20%;
   padding-top: 1rem;
   padding-bottom: 1rem;
   flex-grow: 2;
@@ -34385,12 +34389,12 @@ function Typejob() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
     type: "checkbox",
     onClick: setChecked
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs2, {
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement(Inputs2, {
     placeholder: "City, State, zip code or country",
     type: "text",
     value: inputValueLocation,
     onChange: e => setInputValueLocation(e.target.value)
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Location")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
     type: "checkbox",
     onClick: e => setCheckedLondon()
   }), /*#__PURE__*/_react.default.createElement("label", null, "London")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
@@ -34425,15 +34429,38 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 const Logo = _styledComponents.default.img`
   width: 20%;
+  height: 100%;
+  float: left;
+  margin: 1rem
 `;
 const JobList = _styledComponents.default.div`
   background: white;
   padding: 1rem;
   margin: 1rem;
+  display: flex;
+  position: relative
 `;
 const LinkJob = (0, _styledComponents.default)(_reactRouterDom.Link)`
   text-decoration: none;
   color: black;
+  font-family: Roboto;
+  font-size: 13px
+`;
+const DateLocation = _styledComponents.default.div`
+  display: flex;
+  position: absolute;
+  top: 70%;
+  right: 0;
+  color: gray
+  
+
+`;
+const Dates = _styledComponents.default.p`
+  margin: 1rem
+
+`;
+const NameTitle = _styledComponents.default.div`
+   
 `;
 
 function Fulltimejob() {
@@ -34445,9 +34472,9 @@ function Fulltimejob() {
     return /*#__PURE__*/_react.default.createElement(LinkJob, {
       to: `/Jobdescription/${job.id}`,
       key: job.id
-    }, /*#__PURE__*/_react.default.createElement(JobList, null, /*#__PURE__*/_react.default.createElement("p", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement(Logo, {
+    }, /*#__PURE__*/_react.default.createElement(JobList, null, /*#__PURE__*/_react.default.createElement(Logo, {
       src: job.company_logo
-    }), /*#__PURE__*/_react.default.createElement("button", null, job.type), /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement("p", null, Date.now())));
+    }), /*#__PURE__*/_react.default.createElement(NameTitle, null, /*#__PURE__*/_react.default.createElement("p", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("button", null, job.type)), /*#__PURE__*/_react.default.createElement(DateLocation, null, /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement(Dates, null, Date.now()))));
   });
   return /*#__PURE__*/_react.default.createElement("div", null, someJobs);
 }
@@ -51074,17 +51101,15 @@ function Jobdescription() {
     setJobs
   } = (0, _react.useContext)(_Context.Context);
   const {
-    jobId
+    id
   } = (0, _reactRouterDom.useParams)();
   const history = (0, _reactRouterDom.useHistory)();
-  const job = jobs.find(job => job.id === jobId);
+  const job = jobs.find(job => job.id === id);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement(_Ai.AiOutlineArrowLeft, {
     onClick: () => history.goBack()
-  })), job.map(descriptions => {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: descriptions.id
-    }, descriptions?.description);
-  }));
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    key: descriptions.id
+  }, job.description));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","react-icons/Ai":"node_modules/react-icons/Ai/index.esm.js"}],"App.js":[function(require,module,exports) {
 "use strict";
@@ -51187,7 +51212,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60776" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60851" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

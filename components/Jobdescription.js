@@ -6,20 +6,18 @@ import { Context } from "../Context";
 import { AiOutlineArrowLeft } from "react-icons/Ai";
 
 export default function Jobdescription() {
-  const { jobs, setJobs } = useContext(Context);
-  const {jobId} = useParams()
+  const { jobs, setJobs} = useContext(Context);
+  const {id} = useParams()
   const history = useHistory()
 
-  const job = jobs.find(job => job.id === jobId)
+  const job = jobs.find(job => job.id === id)
 
   return (
     <div>
       <h2>
         <AiOutlineArrowLeft onClick={() => history.goBack()} />
       </h2>
-      {job.map((descriptions) => {
-        return <div key={descriptions.id}>{descriptions?.description}</div>;
-      })}
+         <div key={descriptions.id}>{job.description}</div>
     </div>
   );
 }
