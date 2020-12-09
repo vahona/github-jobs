@@ -10,36 +10,36 @@ import Fulltimejob from "./components/Fulltimejob";
 import { Switch, Route, Link } from "react-router-dom";
 import Jobdescription from './components/Jobdescription'
 
-// const Headers = styled.h1`
-//   text-align: center;
-// `;
+const Headers = styled.h1`
+  text-align: center;
+`;
 
-// const Countainer = styled.div`
- 
-//   display: grid;
-//   grid-template-columns: 30% auto;
-//   margin-top: 2rem
-
-// `;
+const Countainer = styled.div`
+  @media (min-width: 760px) {
+    display: grid;
+    grid-template-columns: 30% auto;
+    margin-top: 2rem;
+  }
+`;
 
 
 function App({children}) {
 
     return (
       <>
-        <h1>Github jobs</h1>
+        <Headers>Github jobs</Headers>
         <Header />
-        <div>
+        <Countainer>
           <Switch>
             <Route exact path="/">
-                <Typejob />
-                <Fulltimejob />
+              <Typejob />
+              <Fulltimejob />
             </Route>
             <Route exact path="/Jobdescription">
               <Jobdescription />
             </Route>
           </Switch>
-        </div>
+        </Countainer>
       </>
     );
 }

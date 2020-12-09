@@ -32304,15 +32304,21 @@ function ContextProvider({
     }
   }, [jobs]); // Filtering the jobs by its title, company, enterprise and benefit
 
-  const SomeJobs = jobs.filter(job => job.title.toLowerCase().includes(inputValue.toLowerCase())); // Filtering by Location
+  const SomeJobs = jobs.filter(job => job.title.toLowerCase().includes(inputValue.toLowerCase()));
+  (0, _react.useEffect)(() => {
+    setJobs(SomeJobs);
+  }, [title, inputValue]); // Filtering by Location
 
   const SomeJobByLocation = jobs.filter(works => works.location.toLowerCase().includes(inputValueLocation.toLowerCase()));
   (0, _react.useEffect)(() => {
-    setJobs(SomeJobs);
-  }, [title, inputValue]);
-  (0, _react.useEffect)(() => {
     setJobs(SomeJobByLocation);
-  }, [location, inputValueLocation]); // Filtering by the type
+  }, [location, inputValueLocation]); // Function to display the filtering
+
+  function searchButton() {
+    console.log(SomeJobByLocation);
+    return SomeJobByLocation;
+  } // Filtering by the type
+
 
   const FullTimejob = jobs.filter(checkeed => checked && checkeed.type === "fulltime");
   (0, _react.useEffect)(() => {
@@ -32334,7 +32340,8 @@ function ContextProvider({
       checked,
       setChecked,
       checkedLondon,
-      setCheckedLondon
+      setCheckedLondon,
+      searchButton
     }
   }, children);
 }
@@ -34259,7 +34266,9 @@ exports.ServerStyleSheet = Ue;
 "production" !== "development" && "undefined" != typeof navigator && "ReactNative" === navigator.product && console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), "production" !== "development" && "test" !== "development" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, 1 === window["__styled-components-init__"] && console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."), window["__styled-components-init__"] += 1);
 var _default = qe;
 exports.default = _default;
-},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"components/Header.js":[function(require,module,exports) {
+},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"image/backgroundImg.png":[function(require,module,exports) {
+module.exports = "/backgroundImg.6e3bffce.png";
+},{}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34273,19 +34282,32 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _Context = require("../Context");
 
+var _backgroundImg = _interopRequireDefault(require("../image/backgroundImg.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+const Background = _styledComponents.default.div`
+  background-image: url(${_backgroundImg.default});
+  background-size: 300%;
+  height: 200px;
+  background-repeat: no-repeat;
+  padding-top: 10%
+`;
 const Forms = _styledComponents.default.form`
   text-align: center;
   display: flex;
   flex-direction: row;
-  border: 1px solid grey;
+  border: 1px solid grey;  
   margin-inline-start: 10%;
   margin-inline-end: 10%;
+ 
+ 
+
+  
 `;
 const InputSerach = _styledComponents.default.input`
   padding-left: 20%;
@@ -34298,22 +34320,30 @@ const ButtonSearch = _styledComponents.default.button`
   margin: 2px;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  background-color: blue;
+  color: white
+`;
+const Containerdiv = _styledComponents.default.div`
+ 
+
 `;
 
 function Header() {
   const {
     inputValue,
-    setInputValue
+    setInputValue,
+    searchButton
   } = (0, _react.useContext)(_Context.Context);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Forms, {
-    onSubmit: setInputValue
-  }, /*#__PURE__*/_react.default.createElement(InputSerach, {
+  return /*#__PURE__*/_react.default.createElement(Background, null, /*#__PURE__*/_react.default.createElement(Containerdiv, null, /*#__PURE__*/_react.default.createElement(Forms, null, /*#__PURE__*/_react.default.createElement(InputSerach, {
     placeholder: "Title, companies, expertise or benefits",
     value: inputValue,
     onChange: e => setInputValue(e.target.value)
-  }), /*#__PURE__*/_react.default.createElement(ButtonSearch, null, "Search")));
+  }), /*#__PURE__*/_react.default.createElement(ButtonSearch, {
+    type: "button",
+    onClick: searchButton
+  }, "Search"))));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"components/Checkjob.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","../image/backgroundImg.png":"image/backgroundImg.png"}],"components/Checkjob.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51088,18 +51118,21 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-// const Headers = styled.h1`
-//   text-align: center;
-// `;
-// const Countainer = styled.div`
-//   display: grid;
-//   grid-template-columns: 30% auto;
-//   margin-top: 2rem
-// `;
+const Headers = _styledComponents.default.h1`
+  text-align: center;
+`;
+const Countainer = _styledComponents.default.div`
+  @media (min-width: 760px) {
+    display: grid;
+    grid-template-columns: 30% auto;
+    margin-top: 2rem;
+  }
+`;
+
 function App({
   children
 }) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(Headers, null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(Countainer, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/"
   }, /*#__PURE__*/_react.default.createElement(_Checkjob.default, null), /*#__PURE__*/_react.default.createElement(_Fulltimejob.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -51154,7 +51187,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58901" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60776" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
