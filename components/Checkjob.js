@@ -2,11 +2,19 @@ import React, {useContext} from 'react'
 
 import styled from "styled-components";
 import { Context } from "../Context";
+import Header from "./Header";
 
 
 const Inputs = styled.input`
    zoom: 2
 `
+
+const Forms = styled.form`
+   @media (min-width: 760px) {
+    float: left;
+    padding: 1rem;
+  }
+`;
 
 const Inputs2 = styled.input`
   padding-left: 2rem;
@@ -17,22 +25,21 @@ const Inputs2 = styled.input`
 
 
 
+
+
 export default function Typejob() {
 
 const {
   inputValueLocation,
   setInputValueLocation,
-  BerlinJobState,
-  setBerlinJobState,
-  checkedBerlin,
-  setCheckedBerlin,
   JobsBerlin,
   JobsLondon,
 } = useContext(Context);
 
     return (
       <div>
-        <form>
+        <Header />
+        <Forms>
           <div>
             <Inputs type="checkbox" />
             <label>Full time</label>
@@ -64,7 +71,7 @@ const {
             <Inputs type="checkbox" />
             <label>New york</label>
           </div>
-        </form>
+        </Forms>
       </div>
     );
 }

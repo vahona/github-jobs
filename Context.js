@@ -1,7 +1,5 @@
     import React, {
       Children,
-      createContext,
-      useReducer,
       useEffect,
       useState,
     } from "react";
@@ -12,8 +10,6 @@
     // Set state to store the data
 
       const [jobs, setJobs] = useState([]);
-      const [NewYorkJob, setNewYorkJob] = useState([]);
-      const [description, setDescription] = useState([]);
       const [inputValue, setInputValue] = useState("");
       const [inputValueLocation, setInputValueLocation] = useState("");
       const [title, setTitle] = useState([]);
@@ -46,27 +42,6 @@
           setJobs(jobs);
         }
       }, [jobs]);
-
-      
-      // Fetching New Yourk job
-
-
-        // useEffect(() => {
-        //   (async () => {
-        //     const result = await fetch(NewYork);
-        //     const dataNew = await result.json();
-        //     setJobs(dataNew);
-        //   })();
-        // }, []);
-
-        // useEffect(() => {
-        //   if (NewYorkJob == []) {
-        //     return null;
-        //   } else {
-        //     setNewYorkJob(NewYorkJob);
-        //   }
-        // }, [NewYorkJob])
-
 
 
       //jobs.github.com/positions.json?description=python&location=new+york

@@ -32280,8 +32280,6 @@ function ContextProvider({
 }) {
   // Set state to store the data
   const [jobs, setJobs] = (0, _react.useState)([]);
-  const [NewYorkJob, setNewYorkJob] = (0, _react.useState)([]);
-  const [description, setDescription] = (0, _react.useState)([]);
   const [inputValue, setInputValue] = (0, _react.useState)("");
   const [inputValueLocation, setInputValueLocation] = (0, _react.useState)("");
   const [title, setTitle] = (0, _react.useState)([]);
@@ -32307,22 +32305,7 @@ function ContextProvider({
     } else {
       setJobs(jobs);
     }
-  }, [jobs]); // Fetching New Yourk job
-  // useEffect(() => {
-  //   (async () => {
-  //     const result = await fetch(NewYork);
-  //     const dataNew = await result.json();
-  //     setJobs(dataNew);
-  //   })();
-  // }, []);
-  // useEffect(() => {
-  //   if (NewYorkJob == []) {
-  //     return null;
-  //   } else {
-  //     setNewYorkJob(NewYorkJob);
-  //   }
-  // }, [NewYorkJob])
-  //jobs.github.com/positions.json?description=python&location=new+york
+  }, [jobs]); //jobs.github.com/positions.json?description=python&location=new+york
   // Filtering the jobs by its title, company, enterprise and benefit
 
   const SomeJobs = jobs.filter(job => job.title.toLowerCase().includes(inputValue.toLowerCase()));
@@ -34406,6 +34389,8 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _Context = require("../Context");
 
+var _Header = _interopRequireDefault(require("./Header"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -34414,6 +34399,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 const Inputs = _styledComponents.default.input`
    zoom: 2
+`;
+const Forms = _styledComponents.default.form`
+   @media (min-width: 760px) {
+    float: left;
+    padding: 1rem;
+  }
 `;
 const Inputs2 = _styledComponents.default.input`
   padding-left: 2rem;
@@ -34426,14 +34417,10 @@ function Typejob() {
   const {
     inputValueLocation,
     setInputValueLocation,
-    BerlinJobState,
-    setBerlinJobState,
-    checkedBerlin,
-    setCheckedBerlin,
     JobsBerlin,
     JobsLondon
   } = (0, _react.useContext)(_Context.Context);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(Forms, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement(Inputs2, {
     placeholder: "City, State, zip code or country",
@@ -34452,7 +34439,7 @@ function Typejob() {
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "New york"))));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"components/Fulltimejob.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","./Header":"components/Header.js"}],"components/Fulltimejob.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51223,19 +51210,18 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 const Headers = _styledComponents.default.h1`
   text-align: center;
-`;
-const Countainer = _styledComponents.default.div`
-  @media (min-width: 760px) {
-    display: grid;
-    grid-template-columns: 30% auto;
-    margin-top: 2rem;
-  }
-`;
+`; // const Countainer = styled.div`
+//   @media (min-width: 760px) {
+//     display: grid;
+//     grid-template-columns: 30% auto;
+//     margin-top: 2rem;
+//   }
+// `;
 
 function App({
   children
 }) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(Headers, null, "Github jobs"), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Countainer, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(Headers, null, "Github jobs"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/"
   }, /*#__PURE__*/_react.default.createElement(_Checkjob.default, null), /*#__PURE__*/_react.default.createElement(_Fulltimejob.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -51290,7 +51276,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60785" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62056" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

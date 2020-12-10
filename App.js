@@ -14,13 +14,13 @@ const Headers = styled.h1`
   text-align: center;
 `;
 
-const Countainer = styled.div`
-  @media (min-width: 760px) {
-    display: grid;
-    grid-template-columns: 30% auto;
-    margin-top: 2rem;
-  }
-`;
+// const Countainer = styled.div`
+//   @media (min-width: 760px) {
+//     display: grid;
+//     grid-template-columns: 30% auto;
+//     margin-top: 2rem;
+//   }
+// `;
 
 
 function App({children}) {
@@ -28,9 +28,8 @@ function App({children}) {
     return (
       <>
         <Headers>Github jobs</Headers>
-        <Header />
         <div>
-          <Countainer>
+          <div>
             <Switch>
               <Route exact path="/">
                 <Typejob />
@@ -40,7 +39,7 @@ function App({children}) {
                 <Jobdescription />
               </Route>
             </Switch>
-          </Countainer>
+          </div>
         </div>
       </>
     );
