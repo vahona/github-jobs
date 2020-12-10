@@ -34297,7 +34297,140 @@ var _default = qe;
 exports.default = _default;
 },{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"image/backgroundImg.png":[function(require,module,exports) {
 module.exports = "/backgroundImg.6e3bffce.png";
-},{}],"components/Header.js":[function(require,module,exports) {
+},{}],"components/Style.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Containerdiv = exports.ButtonSearch = exports.InputSerach = exports.FormsValue = exports.NameTitles = exports.Datess = exports.DateLocations = exports.JobLists = exports.Logos = exports.Headers = exports.Inputs2 = exports.Forms = exports.Inputs = exports.MoreInfo = exports.Description = exports.Company = exports.Button = exports.Container = exports.Text = exports.Dates = exports.DateLocation = exports.JobList = exports.Logo = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Logo = _styledComponents.default.img`
+  width: 100%;
+  height: 50%;
+  margin: 1rem;
+  margin-top: 3rem;
+`;
+exports.Logo = Logo;
+const JobList = _styledComponents.default.div`
+  display: grid;
+  grid-template-columns: 20% 80%;
+`;
+exports.JobList = JobList;
+const DateLocation = _styledComponents.default.div`
+  color: gray;
+`;
+exports.DateLocation = DateLocation;
+const Dates = _styledComponents.default.p`
+  margin: 1rem;
+`;
+exports.Dates = Dates;
+const Text = _styledComponents.default.p`
+  margin: 1rem;
+`;
+exports.Text = Text;
+const Container = _styledComponents.default.div`
+  display: flex;
+  margin-top: 1rem;
+`;
+exports.Container = Container;
+const Button = _styledComponents.default.button``;
+exports.Button = Button;
+const Company = _styledComponents.default.p`
+  margin: 0;
+  margin-right: 1rem;
+`;
+exports.Company = Company;
+const Description = _styledComponents.default.div`
+  display: grid;
+  grid-template-columns: 20% auto;
+`;
+exports.Description = Description;
+const MoreInfo = _styledComponents.default.div`
+  margin: 2rem;
+`;
+exports.MoreInfo = MoreInfo;
+const Inputs = _styledComponents.default.input`
+  zoom: 2;
+`;
+exports.Inputs = Inputs;
+const Forms = _styledComponents.default.form`
+  @media (min-width: 760px) {
+    float: left;
+    padding: 1rem;
+  }
+`;
+exports.Forms = Forms;
+const Inputs2 = _styledComponents.default.input`
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+`;
+exports.Inputs2 = Inputs2;
+const Headers = _styledComponents.default.h1`
+  text-align: center;
+`;
+exports.Headers = Headers;
+const Logos = _styledComponents.default.img`
+  width: 20%;
+  height: 100%;
+  float: left;
+  margin: 1rem;
+`;
+exports.Logos = Logos;
+const JobLists = _styledComponents.default.div`
+  background: white;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  position: relative;
+`;
+exports.JobLists = JobLists;
+const DateLocations = _styledComponents.default.div`
+  display: flex;
+  position: absolute;
+  top: 70%;
+  right: 0;
+  color: gray;
+`;
+exports.DateLocations = DateLocations;
+const Datess = _styledComponents.default.p`
+  margin: 1rem;
+`;
+exports.Datess = Datess;
+const NameTitles = _styledComponents.default.div``;
+exports.NameTitles = NameTitles;
+const FormsValue = _styledComponents.default.form`
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid grey;
+  margin-inline-start: 5%;
+  margin-inline-end: 10%;
+`;
+exports.FormsValue = FormsValue;
+const InputSerach = _styledComponents.default.input`
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex-grow: 2;
+`;
+exports.InputSerach = InputSerach;
+const ButtonSearch = _styledComponents.default.button`
+  margin: 2px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: blue;
+  color: white;
+`;
+exports.ButtonSearch = ButtonSearch;
+const Containerdiv = _styledComponents.default.div``;
+exports.Containerdiv = Containerdiv;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34312,6 +34445,8 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 var _Context = require("../Context");
 
 var _backgroundImg = _interopRequireDefault(require("../image/backgroundImg.png"));
+
+var _Style = require("./Style");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34331,34 +34466,6 @@ const Background = _styledComponents.default.div`
     height: 150px;
   }
 `;
-const Forms = _styledComponents.default.form`
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid grey;  
-  margin-inline-start: 5%;
-  margin-inline-end: 10%;
- 
- 
-
-  
-`;
-const InputSerach = _styledComponents.default.input`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  flex-grow: 2;
-`;
-const ButtonSearch = _styledComponents.default.button`
-  margin: 2px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: blue;
-  color: white
-`;
-const Containerdiv = _styledComponents.default.div`
- 
-
-`;
 
 function Header() {
   const {
@@ -34366,16 +34473,16 @@ function Header() {
     setInputValue,
     searchButton
   } = (0, _react.useContext)(_Context.Context);
-  return /*#__PURE__*/_react.default.createElement(Background, null, /*#__PURE__*/_react.default.createElement(Containerdiv, null, /*#__PURE__*/_react.default.createElement(Forms, null, /*#__PURE__*/_react.default.createElement(InputSerach, {
+  return /*#__PURE__*/_react.default.createElement(Background, null, /*#__PURE__*/_react.default.createElement(_Style.Containerdiv, null, /*#__PURE__*/_react.default.createElement(_Style.FormsValue, null, /*#__PURE__*/_react.default.createElement(_Style.InputSerach, {
     placeholder: "Title, companies, expertise or benefits",
     value: inputValue,
     onChange: e => setInputValue(e.target.value)
-  }), /*#__PURE__*/_react.default.createElement(ButtonSearch, {
+  }), /*#__PURE__*/_react.default.createElement(_Style.ButtonSearch, {
     type: "button",
     onClick: searchButton
   }, "Search"))));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","../image/backgroundImg.png":"image/backgroundImg.png"}],"components/Checkjob.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","../image/backgroundImg.png":"image/backgroundImg.png","./Style":"components/Style.js"}],"components/Checkjob.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34391,27 +34498,13 @@ var _Context = require("../Context");
 
 var _Header = _interopRequireDefault(require("./Header"));
 
+var _Style = require("./Style");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-const Inputs = _styledComponents.default.input`
-   zoom: 2
-`;
-const Forms = _styledComponents.default.form`
-   @media (min-width: 760px) {
-    float: left;
-    padding: 1rem;
-  }
-`;
-const Inputs2 = _styledComponents.default.input`
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
-`;
 
 function Typejob() {
   const {
@@ -34420,26 +34513,26 @@ function Typejob() {
     JobsBerlin,
     JobsLondon
   } = (0, _react.useContext)(_Context.Context);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(Forms, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Headers, null, "Github ", /*#__PURE__*/_react.default.createElement("span", null, " jobs ")), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_Style.Forms, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
     type: "checkbox"
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement(Inputs2, {
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement(_Style.Inputs2, {
     placeholder: "City, State, zip code or country",
     type: "text",
     value: inputValueLocation,
     onChange: e => setInputValueLocation(e.target.value)
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
     type: "checkbox",
     onClick: e => JobsLondon()
-  }), /*#__PURE__*/_react.default.createElement("label", null, "London")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
+  }), /*#__PURE__*/_react.default.createElement("label", null, "London")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
     type: "checkbox",
     onClick: e => JobsBerlin()
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Berlin")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Berlin")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
     type: "checkbox"
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Amsterdam")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Inputs, {
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Amsterdam")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
     type: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "New york"))));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","./Header":"components/Header.js"}],"components/Fulltimejob.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","./Header":"components/Header.js","./Style":"components/Style.js"}],"components/Fulltimejob.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34455,46 +34548,19 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _Style = require("./Style");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-const Logo = _styledComponents.default.img`
-  width: 20%;
-  height: 100%;
-  float: left;
-  margin: 1rem
-`;
-const JobList = _styledComponents.default.div`
-  background: white;
-  padding: 1rem;
-  margin: 1rem;
-  display: flex;
-  position: relative
-`;
 const LinkJob = (0, _styledComponents.default)(_reactRouterDom.Link)`
   text-decoration: none;
   color: black;
   font-family: Roboto;
   font-size: 13px
-`;
-const DateLocation = _styledComponents.default.div`
-  display: flex;
-  position: absolute;
-  top: 70%;
-  right: 0;
-  color:gray
-  
-
-`;
-const Dates = _styledComponents.default.p`
-  margin: 1rem
-
-`;
-const NameTitle = _styledComponents.default.div`
-   
 `;
 
 function Fulltimejob() {
@@ -34508,16 +34574,16 @@ function Fulltimejob() {
     return /*#__PURE__*/_react.default.createElement(LinkJob, {
       to: `/Jobdescription/${job.id}`,
       key: job.id
-    }, /*#__PURE__*/_react.default.createElement(JobList, null, /*#__PURE__*/_react.default.createElement(Logo, {
+    }, /*#__PURE__*/_react.default.createElement(_Style.JobLists, null, /*#__PURE__*/_react.default.createElement(_Style.Logos, {
       src: job.company_logo
-    }), /*#__PURE__*/_react.default.createElement(NameTitle, null, /*#__PURE__*/_react.default.createElement("p", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("button", null, job.type)), /*#__PURE__*/_react.default.createElement(DateLocation, null, /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement(Dates, null, Date.now()))));
+    }), /*#__PURE__*/_react.default.createElement(_Style.NameTitles, null, /*#__PURE__*/_react.default.createElement("p", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("button", null, job.type)), /*#__PURE__*/_react.default.createElement(_Style.DateLocations, null, /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement(_Style.Datess, null, Date.now()))));
   });
   return /*#__PURE__*/_react.default.createElement("div", null, someJobs);
 }
 
 var _default = Fulltimejob;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"node_modules/react-icons/lib/esm/iconsManifest.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./Style":"components/Style.js"}],"node_modules/react-icons/lib/esm/iconsManifest.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51129,35 +51195,13 @@ var _Context = require("../Context");
 
 var _Ai = require("react-icons/Ai");
 
+var _Style = require("./Style");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-const Logo = _styledComponents.default.img`
-  width: 20%;
-  height: 100%;
-  float: left;
-  margin: 1rem;
-`;
-const JobList = _styledComponents.default.div`
-  background: white;
-  padding: 1rem;
-  margin: 1rem;
-  display: flex;
-  position: relative;
-`;
-const DateLocation = _styledComponents.default.div`
-  display: flex;
-  position: absolute;
-  top: 70%;
-  right: 0;
-  color: gray;
-`;
-const Dates = _styledComponents.default.p`
-  margin: 1rem;
-`;
 
 function Jobdescription() {
   const {
@@ -51170,13 +51214,13 @@ function Jobdescription() {
   const history = (0, _reactRouterDom.useHistory)();
   const job = jobs.find(job => job.id === id);
   console.log(job);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement(_Ai.AiOutlineArrowLeft, {
+  return /*#__PURE__*/_react.default.createElement(_Style.Description, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github ", /*#__PURE__*/_react.default.createElement("span", null, "jobs")), /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement(_Ai.AiOutlineArrowLeft, {
     onClick: () => history.goBack()
-  }), "Back"), /*#__PURE__*/_react.default.createElement(JobList, null, /*#__PURE__*/_react.default.createElement(Logo, {
+  }), "Back to search"), /*#__PURE__*/_react.default.createElement("p", null, "How to apply"), /*#__PURE__*/_react.default.createElement("p", null, " ", "Please Email a copy of your resume and online portfolio to", " ", /*#__PURE__*/_react.default.createElement("span", null, " wes@Kosisto.com & cc"), /*#__PURE__*/_react.default.createElement("span", null, "eric@kosisto.com"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement(_Style.Company, null, job?.company), /*#__PURE__*/_react.default.createElement(_Style.Button, null, job?.type)), /*#__PURE__*/_react.default.createElement(_Style.JobList, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Logo, {
     src: job?.company_logo
-  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, job?.company), /*#__PURE__*/_react.default.createElement("p", null, job?.title), /*#__PURE__*/_react.default.createElement("button", null, job?.type)), /*#__PURE__*/_react.default.createElement(DateLocation, null, /*#__PURE__*/_react.default.createElement("p", null, job?.location), /*#__PURE__*/_react.default.createElement(Dates, null, Date.now()))), /*#__PURE__*/_react.default.createElement("div", null, job?.description.replace(/<[^>]+>/g, "")));
+  })), /*#__PURE__*/_react.default.createElement(_Style.MoreInfo, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.DateLocation, null, /*#__PURE__*/_react.default.createElement(_Style.Dates, null, Date.now())), /*#__PURE__*/_react.default.createElement("p", null, job?.title)), /*#__PURE__*/_react.default.createElement(_Style.DateLocation, null, /*#__PURE__*/_react.default.createElement("p", null, job?.location)))), /*#__PURE__*/_react.default.createElement(_Style.Text, null, job?.description.replace(/<[^>]+>/g, ""))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","react-icons/Ai":"node_modules/react-icons/Ai/index.esm.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","react-icons/Ai":"node_modules/react-icons/Ai/index.esm.js","./Style":"components/Style.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51208,20 +51252,10 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-const Headers = _styledComponents.default.h1`
-  text-align: center;
-`; // const Countainer = styled.div`
-//   @media (min-width: 760px) {
-//     display: grid;
-//     grid-template-columns: 30% auto;
-//     margin-top: 2rem;
-//   }
-// `;
-
 function App({
   children
 }) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(Headers, null, "Github jobs"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/"
   }, /*#__PURE__*/_react.default.createElement(_Checkjob.default, null), /*#__PURE__*/_react.default.createElement(_Fulltimejob.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -51276,7 +51310,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62056" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52533" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

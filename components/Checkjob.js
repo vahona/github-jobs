@@ -3,27 +3,7 @@ import React, {useContext} from 'react'
 import styled from "styled-components";
 import { Context } from "../Context";
 import Header from "./Header";
-
-
-const Inputs = styled.input`
-   zoom: 2
-`
-
-const Forms = styled.form`
-   @media (min-width: 760px) {
-    float: left;
-    padding: 1rem;
-  }
-`;
-
-const Inputs2 = styled.input`
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
-`;
-
-
+import {Inputs, Forms, Inputs2, Headers} from './Style'
 
 
 
@@ -38,6 +18,9 @@ const {
 
     return (
       <div>
+        <Headers>
+          Github <span> jobs </span>
+        </Headers>
         <Header />
         <Forms>
           <div>

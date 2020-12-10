@@ -6,37 +6,19 @@ import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Context } from "../Context";
 import { AiOutlineArrowLeft } from "react-icons/Ai";
+import {Logo,
+JobList,
+DateLocation,
+Dates,
+Text,
+Container,
+Button,
+Company,
+Description,
+MoreInfo}
+from './Style'
 
 
-
-const Logo = styled.img`
-  width: 20%;
-  height: 100%;
-  float: left;
-  margin: 1rem;
-`;
-
-const JobList = styled.div`
-  background: white;
-  padding: 1rem;
-  margin: 1rem;
-  display: flex;
-  position: relative;
-`;
-
-
-
-const DateLocation = styled.div`
-  display: flex;
-  position: absolute;
-  top: 70%;
-  right: 0;
-  color: gray;
-`;
-
-const Dates = styled.p`
-  margin: 1rem;
-`;
 
 export default function Jobdescription() {
   const { jobs, setJobs} = useContext(Context);
@@ -47,29 +29,51 @@ export default function Jobdescription() {
 
   console.log(job);
 
-  
-
 
   return (
-    <div>
-      <h2>
-        <AiOutlineArrowLeft onClick={() => history.goBack()} />
-        Back
-      </h2>
-      <JobList>
-        <Logo src={job?.company_logo} />
-        <div>
-          <p>{job?.company}</p>
-          <p>{job?.title}</p>
-          <button>{job?.type}</button>
-        </div>
+    <Description>
+      <div>
+        <h1>
+          Github <span>jobs</span>
+        </h1>
+        <h2>
+          <AiOutlineArrowLeft onClick={() => history.goBack()} />
+          Back to search
+        </h2>
+        <p>How to apply</p>
+        <p>
+          {" "}
+          Please Email a copy of your resume and online portfolio to{" "}
+          <span> wes@Kosisto.com & cc</span>
+          <span>eric@kosisto.com</span>
+        </p>
+      </div>
+      <div>
+        <Container>
+          <Company>{job?.company}</Company>
+          <Button>{job?.type}</Button>
+        </Container>
+        <JobList>
+          <div>
+            <Logo src={job?.company_logo} />
+          </div>
 
-        <DateLocation>
-          <p>{job?.location}</p>
-          <Dates>{Date.now()}</Dates>
-        </DateLocation>
-      </JobList>
-      <div>{job?.description.replace(/<[^>]+>/g, "")}</div>
-    </div>
+          <MoreInfo>
+            <div>
+              <DateLocation>
+                <Dates>{Date.now()}</Dates>
+              </DateLocation>
+              <p>{job?.title}</p>
+            </div>
+
+            <DateLocation>
+              <p>{job?.location}</p>
+            </DateLocation>
+          </MoreInfo>
+        </JobList>
+
+        <Text>{job?.description.replace(/<[^>]+>/g, "")}</Text>
+      </div>
+    </Description>
   );
 }

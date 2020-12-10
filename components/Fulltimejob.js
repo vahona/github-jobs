@@ -4,21 +4,8 @@ import { Context } from "../Context";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 
+import {Logos, JobLists, DateLocations, Datess, NameTitles} from './Style'
 
-const Logo = styled.img`
-  width: 20%;
-  height: 100%;
-  float: left;
-  margin: 1rem
-`;
-
-const JobList = styled.div`
-  background: white;
-  padding: 1rem;
-  margin: 1rem;
-  display: flex;
-  position: relative
-`;
 
 const LinkJob = styled(Link)`
   text-decoration: none;
@@ -27,23 +14,7 @@ const LinkJob = styled(Link)`
   font-size: 13px
 `;
 
-const DateLocation = styled.div`
-  display: flex;
-  position: absolute;
-  top: 70%;
-  right: 0;
-  color:gray
-  
 
-`;
-
-const Dates = styled.p`
-  margin: 1rem
-
-`
-const NameTitle = styled.div`
-   
-`
 
 function Fulltimejob() {
   const { jobs, setJobs, NewYorkJob, setNewYorkJob } = useContext(Context);
@@ -52,19 +23,19 @@ function Fulltimejob() {
   const someJobs = jobs.map((job) => {
     return (
       <LinkJob to={`/Jobdescription/${job.id}`} key={job.id}>
-        <JobList>
-          <Logo src={job.company_logo} />
-          <NameTitle>
+        <JobLists>
+          <Logos src={job.company_logo} />
+          <NameTitles>
             <p>{job.company}</p>
             <p>{job.title}</p>
             <button>{job.type}</button>
-          </NameTitle>
+          </NameTitles>
 
-          <DateLocation>
+          <DateLocations>
             <p>{job.location}</p>
-            <Dates>{Date.now()}</Dates>
-          </DateLocation>
-        </JobList>
+            <Datess>{Date.now()}</Datess>
+          </DateLocations>
+        </JobLists>
       </LinkJob>
     );
   });

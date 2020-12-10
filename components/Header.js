@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Context } from "../Context";
 
 import Images from '../image/backgroundImg.png'
+import {FormsValue, InputSerach, ButtonSearch, Containerdiv} from './Style'
 
 
 
@@ -21,37 +22,6 @@ const Background = styled.div`
   }
 `; 
 
-const Forms = styled.form`
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid grey;  
-  margin-inline-start: 5%;
-  margin-inline-end: 10%;
- 
- 
-
-  
-`;
-
-const InputSerach = styled.input`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  flex-grow: 2;
-`;
-
-const ButtonSearch = styled.button`
-  margin: 2px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: blue;
-  color: white
-`;
-
-const Containerdiv = styled.div`
- 
-
-`
 
     export default function Header() {
 
@@ -60,7 +30,7 @@ const Containerdiv = styled.div`
     return (
       <Background>
         <Containerdiv>
-          <Forms>
+          <FormsValue>
             <InputSerach
               placeholder="Title, companies, expertise or benefits"
               value={inputValue}
@@ -69,7 +39,7 @@ const Containerdiv = styled.div`
             <ButtonSearch type="button" onClick={searchButton}>
               Search
             </ButtonSearch>
-          </Forms>
+          </FormsValue>
         </Containerdiv>
       </Background>
     );
