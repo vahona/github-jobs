@@ -32286,7 +32286,11 @@ function ContextProvider({
   const [BerlinJobState, setBerlinJobState] = (0, _react.useState)([]);
   const [checkedBerlin, setCheckedBerlin] = (0, _react.useState)(false);
   const [LondonJobState, setLondonJobState] = (0, _react.useState)([]);
-  const [checkedLondon, setCheckedlondon] = (0, _react.useState)(false); // const [loading, setLoading] = useState(false)
+  const [checkedLondon, setCheckedlondon] = (0, _react.useState)(false);
+  const [UnitedJobState, setUnitedJobState] = (0, _react.useState)([]);
+  const [checkedUnited, setCheckedUnited] = (0, _react.useState)(false);
+  const [BarcelonaJobState, setBarcelonaJobState] = (0, _react.useState)([]);
+  const [checkedBarcelona, setCheckedBarcelona] = (0, _react.useState)(false); // const [loading, setLoading] = useState(false)
 
   console.log(jobs); // Use useEffect to fetch the data from API
 
@@ -32352,6 +32356,34 @@ function ContextProvider({
   (0, _react.useEffect)(() => {
     setJobs(LondonJobs);
   }, ["London", checkedLondon]);
+  const UnitedJobs = jobs.filter(job => job.location === "United States");
+
+  function JobsUnited() {
+    if (!checkedUnited) {
+      setCheckedUnited(UnitedJobState);
+      return UnitedJobs;
+    } else {
+      return jobs;
+    }
+  }
+
+  (0, _react.useEffect)(() => {
+    setJobs(UnitedJobs);
+  }, ["United State", checkedUnited]);
+  const BarcelonaJobs = jobs.filter(job => job.location === "Barcelona");
+
+  function JobsBarcelona() {
+    if (!checkedBarcelona) {
+      setCheckedBarcelona(BarcelonaJobState);
+      return BarcelonaJobs;
+    } else {
+      return jobs;
+    }
+  }
+
+  (0, _react.useEffect)(() => {
+    setJobs(BarcelonaJobs);
+  }, ["Barcelona", checkedBarcelona]);
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       jobs,
@@ -32370,7 +32402,9 @@ function ContextProvider({
       setLondonJobState,
       checkedLondon,
       setCheckedlondon,
-      JobsLondon
+      JobsLondon,
+      JobsUnited,
+      JobsBarcelona
     }
   }, children);
 }
@@ -34511,7 +34545,9 @@ function Typejob() {
     inputValueLocation,
     setInputValueLocation,
     JobsBerlin,
-    JobsLondon
+    JobsLondon,
+    JobsUnited,
+    JobsBarcelona
   } = (0, _react.useContext)(_Context.Context);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Headers, null, "Github ", /*#__PURE__*/_react.default.createElement("span", null, " jobs ")), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_Style.Forms, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
     type: "checkbox"
@@ -34527,10 +34563,12 @@ function Typejob() {
     type: "checkbox",
     onClick: e => JobsBerlin()
   }), /*#__PURE__*/_react.default.createElement("label", null, "Berlin")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
-    type: "checkbox"
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Amsterdam")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
-    type: "checkbox"
-  }), /*#__PURE__*/_react.default.createElement("label", null, "New york"))));
+    type: "checkbox",
+    onClick: e => JobsUnited()
+  }), /*#__PURE__*/_react.default.createElement("label", null, "United State")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Inputs, {
+    type: "checkbox",
+    onClick: e => JobsBarcelona()
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Barcelona"))));
 }
 },{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","./Header":"components/Header.js","./Style":"components/Style.js"}],"components/Fulltimejob.js":[function(require,module,exports) {
 "use strict";
@@ -51310,7 +51348,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52533" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62944" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

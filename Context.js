@@ -17,6 +17,10 @@
       const [checkedBerlin, setCheckedBerlin] = useState(false);
       const [LondonJobState, setLondonJobState] = useState([]);
       const [checkedLondon, setCheckedlondon] = useState(false);
+      const [UnitedJobState, setUnitedJobState] = useState([]);
+      const [checkedUnited, setCheckedUnited] = useState(false);
+      const [BarcelonaJobState, setBarcelonaJobState] = useState([]);
+      const [checkedBarcelona, setCheckedBarcelona] = useState(false);
 
       // const [loading, setLoading] = useState(false)
 
@@ -112,6 +116,40 @@
 
 
 
+         const UnitedJobs = jobs.filter((job) => job.location === "United States");
+
+         function JobsUnited() {
+           if (!checkedUnited) {
+             setCheckedUnited(UnitedJobState);
+             return UnitedJobs;
+           } else {
+             return jobs;
+           }
+         }
+
+         useEffect(() => {
+           setJobs(UnitedJobs);
+         }, ["United State", checkedUnited]);
+
+
+
+         const BarcelonaJobs = jobs.filter((job) => job.location === "Barcelona");
+
+         function JobsBarcelona() {
+           if (!checkedBarcelona) {
+             setCheckedBarcelona(BarcelonaJobState);
+             return BarcelonaJobs;
+           } else {
+             return jobs;
+           }
+         }
+
+         useEffect(() => {
+           setJobs(BarcelonaJobs);
+         }, ["Barcelona", checkedBarcelona]);
+
+
+
       return (
         <Context.Provider
           value={{
@@ -132,6 +170,8 @@
             checkedLondon,
             setCheckedlondon,
             JobsLondon,
+            JobsUnited,
+            JobsBarcelona,
           }}
         >
           {children}

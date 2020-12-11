@@ -14,6 +14,8 @@ const {
   setInputValueLocation,
   JobsBerlin,
   JobsLondon,
+  JobsUnited,
+  JobsBarcelona,
 } = useContext(Context);
 
     return (
@@ -47,12 +49,12 @@ const {
             <label>Berlin</label>
           </div>
           <div>
-            <Inputs type="checkbox" />
-            <label>Amsterdam</label>
+            <Inputs type="checkbox" onClick={(e) => JobsUnited()} />
+            <label>United State</label>
           </div>
           <div>
-            <Inputs type="checkbox" />
-            <label>New york</label>
+            <Inputs type="checkbox" onClick={(e) => JobsBarcelona()} />
+            <label>Barcelona</label>
           </div>
         </Forms>
       </div>
