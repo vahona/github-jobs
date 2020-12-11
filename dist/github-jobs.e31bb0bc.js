@@ -32392,10 +32392,6 @@ function ContextProvider({
       setInputValue,
       inputValueLocation,
       setInputValueLocation,
-      BerlinJobState,
-      setBerlinJobState,
-      checkedBerlin,
-      setCheckedBerlin,
       searchButton,
       JobsBerlin,
       LondonJobState,
@@ -34337,7 +34333,7 @@ module.exports = "/backgroundImg.6e3bffce.png";
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Containerdiv = exports.ButtonSearch = exports.InputSerach = exports.FormsValue = exports.NameTitles = exports.Datess = exports.DateLocations = exports.JobLists = exports.Logos = exports.Headers = exports.Inputs2 = exports.Forms = exports.Inputs = exports.MoreInfo = exports.Description = exports.Company = exports.Button = exports.Container = exports.Text = exports.Dates = exports.DateLocation = exports.JobList = exports.Logo = void 0;
+exports.Containerdiv = exports.ButtonSearch = exports.InputSerach = exports.FormsValue = exports.NameTitles = exports.Datess = exports.DateLocations = exports.JobLists = exports.Logos = exports.Headers = exports.Inputs2 = exports.Forms = exports.Inputs = exports.SpanMail = exports.Span = exports.SubTitle = exports.Title = exports.MoreInfo = exports.Description = exports.Company = exports.Button = exports.Container = exports.Information = exports.Contact = exports.Text = exports.LocationJob = exports.TitleJob = exports.Mail = exports.Application = exports.Dates = exports.DateLocation = exports.JobList = exports.Logo = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34361,22 +34357,72 @@ const DateLocation = _styledComponents.default.div`
 exports.DateLocation = DateLocation;
 const Dates = _styledComponents.default.p`
   margin: 1rem;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.06px
+ 
 `;
 exports.Dates = Dates;
+const Application = _styledComponents.default.p`
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: gray;
+`;
+exports.Application = Application;
+const Mail = _styledComponents.default.p`
+  font-weight: 500;
+  font-size: 14px;
+  line-height:21px
+`;
+exports.Mail = Mail;
+const TitleJob = _styledComponents.default.p`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.09px
+
+`;
+exports.TitleJob = TitleJob;
+const LocationJob = _styledComponents.default.p`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.06px;
+
+`;
+exports.LocationJob = LocationJob;
 const Text = _styledComponents.default.p`
   margin: 1rem;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 `;
 exports.Text = Text;
+const Contact = _styledComponents.default.div`
+  font-family: Poppins
+`;
+exports.Contact = Contact;
+const Information = _styledComponents.default.div`
+  font-family: Roboto;
+ 
+
+`;
+exports.Information = Information;
 const Container = _styledComponents.default.div`
   display: flex;
   margin-top: 1rem;
 `;
 exports.Container = Container;
-const Button = _styledComponents.default.button``;
+const Button = _styledComponents.default.button`
+ margin-left: 1rem
+`;
 exports.Button = Button;
 const Company = _styledComponents.default.p`
   margin: 0;
-  margin-right: 1rem;
+  font-weight: 700 ;
+  font-size: 24px;
+  line-height:28.13px;
+  margin-inline-start: 2rem
 `;
 exports.Company = Company;
 const Description = _styledComponents.default.div`
@@ -34388,6 +34434,23 @@ const MoreInfo = _styledComponents.default.div`
   margin: 2rem;
 `;
 exports.MoreInfo = MoreInfo;
+const Title = _styledComponents.default.h1`
+   font-size: 16px;
+ `;
+exports.Title = Title;
+const SubTitle = _styledComponents.default.h1`
+   color: blue;
+   font-size: 16px;
+ `;
+exports.SubTitle = SubTitle;
+const Span = _styledComponents.default.span`
+   color: gray;
+ `;
+exports.Span = Span;
+const SpanMail = _styledComponents.default.span`
+    color: blue
+  `;
+exports.SpanMail = SpanMail;
 const Inputs = _styledComponents.default.input`
   zoom: 2;
 `;
@@ -51252,11 +51315,11 @@ function Jobdescription() {
   const history = (0, _reactRouterDom.useHistory)();
   const job = jobs.find(job => job.id === id);
   console.log(job);
-  return /*#__PURE__*/_react.default.createElement(_Style.Description, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github ", /*#__PURE__*/_react.default.createElement("span", null, "jobs")), /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement(_Ai.AiOutlineArrowLeft, {
+  return /*#__PURE__*/_react.default.createElement(_Style.Description, null, /*#__PURE__*/_react.default.createElement(_Style.Contact, null, /*#__PURE__*/_react.default.createElement(_Style.Title, null, "Github ", /*#__PURE__*/_react.default.createElement(_Style.Span, null, "jobs")), /*#__PURE__*/_react.default.createElement(_Style.SubTitle, null, /*#__PURE__*/_react.default.createElement(_Ai.AiOutlineArrowLeft, {
     onClick: () => history.goBack()
-  }), "Back to search"), /*#__PURE__*/_react.default.createElement("p", null, "How to apply"), /*#__PURE__*/_react.default.createElement("p", null, " ", "Please Email a copy of your resume and online portfolio to", " ", /*#__PURE__*/_react.default.createElement("span", null, " wes@Kosisto.com & cc"), /*#__PURE__*/_react.default.createElement("span", null, "eric@kosisto.com"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement(_Style.Company, null, job?.company), /*#__PURE__*/_react.default.createElement(_Style.Button, null, job?.type)), /*#__PURE__*/_react.default.createElement(_Style.JobList, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Logo, {
+  }), "Back to search"), /*#__PURE__*/_react.default.createElement(_Style.Application, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_Style.Mail, null, " ", "Please Email a copy of your resume and online portfolio to", " ", /*#__PURE__*/_react.default.createElement(_Style.SpanMail, null, " wes@Kosisto.com & cc"), /*#__PURE__*/_react.default.createElement(_Style.SpanMail, null, "eric@kosisto.com"))), /*#__PURE__*/_react.default.createElement(_Style.Information, null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement(_Style.Company, null, job?.company), /*#__PURE__*/_react.default.createElement(_Style.Button, null, job?.type)), /*#__PURE__*/_react.default.createElement(_Style.JobList, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Logo, {
     src: job?.company_logo
-  })), /*#__PURE__*/_react.default.createElement(_Style.MoreInfo, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.DateLocation, null, /*#__PURE__*/_react.default.createElement(_Style.Dates, null, Date.now())), /*#__PURE__*/_react.default.createElement("p", null, job?.title)), /*#__PURE__*/_react.default.createElement(_Style.DateLocation, null, /*#__PURE__*/_react.default.createElement("p", null, job?.location)))), /*#__PURE__*/_react.default.createElement(_Style.Text, null, job?.description.replace(/<[^>]+>/g, ""))));
+  })), /*#__PURE__*/_react.default.createElement(_Style.MoreInfo, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.DateLocation, null, /*#__PURE__*/_react.default.createElement(_Style.Dates, null, Date.now())), /*#__PURE__*/_react.default.createElement(_Style.TitleJob, null, job?.title)), /*#__PURE__*/_react.default.createElement(_Style.DateLocation, null, /*#__PURE__*/_react.default.createElement("p", null, job?.location)))), /*#__PURE__*/_react.default.createElement(_Style.Text, null, job?.description.replace(/<[^>]+>/g, ""))));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js","react-icons/Ai":"node_modules/react-icons/Ai/index.esm.js","./Style":"components/Style.js"}],"App.js":[function(require,module,exports) {
 "use strict";

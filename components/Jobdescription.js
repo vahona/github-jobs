@@ -6,17 +6,29 @@ import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Context } from "../Context";
 import { AiOutlineArrowLeft } from "react-icons/Ai";
-import {Logo,
-JobList,
-DateLocation,
-Dates,
-Text,
-Container,
-Button,
-Company,
-Description,
-MoreInfo}
-from './Style'
+import {
+  Logo,
+  JobList,
+  DateLocation,
+  Dates,
+  Text,
+  Container,
+  Button,
+  Company,
+  Description,
+  MoreInfo,
+  Title,
+  Span,
+  SubTitle,
+  SpanMail,
+  Contact,
+  Information,
+  TitleJob,
+  Application,
+  Mail
+} from "./Style";
+
+
 
 
 
@@ -32,23 +44,23 @@ export default function Jobdescription() {
 
   return (
     <Description>
-      <div>
-        <h1>
-          Github <span>jobs</span>
-        </h1>
-        <h2>
+      <Contact>
+        <Title>
+          Github <Span>jobs</Span>
+        </Title>
+        <SubTitle>
           <AiOutlineArrowLeft onClick={() => history.goBack()} />
           Back to search
-        </h2>
-        <p>How to apply</p>
-        <p>
+        </SubTitle>
+        <Application>How to apply</Application>
+        <Mail>
           {" "}
           Please Email a copy of your resume and online portfolio to{" "}
-          <span> wes@Kosisto.com & cc</span>
-          <span>eric@kosisto.com</span>
-        </p>
-      </div>
-      <div>
+          <SpanMail> wes@Kosisto.com & cc</SpanMail>
+          <SpanMail>eric@kosisto.com</SpanMail>
+        </Mail>
+      </Contact>
+      <Information>
         <Container>
           <Company>{job?.company}</Company>
           <Button>{job?.type}</Button>
@@ -63,7 +75,7 @@ export default function Jobdescription() {
               <DateLocation>
                 <Dates>{Date.now()}</Dates>
               </DateLocation>
-              <p>{job?.title}</p>
+              <TitleJob>{job?.title}</TitleJob>
             </div>
 
             <DateLocation>
@@ -73,7 +85,7 @@ export default function Jobdescription() {
         </JobList>
 
         <Text>{job?.description.replace(/<[^>]+>/g, "")}</Text>
-      </div>
+      </Information>
     </Description>
   );
 }
